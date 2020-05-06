@@ -106,7 +106,8 @@ inline byte getCombinedLedData(byte col, byte row) {
 
   return data;
 }
-
+///////////////*******************************
+/////////////// probably want to change this for play mode??
 void setLed(byte col, byte row, byte color, CellDisplay disp) {
   setLed(col, row, color, disp, LED_LAYER_MAIN);
 }
@@ -132,6 +133,8 @@ void setLed(byte col, byte row, byte color, CellDisplay disp, byte layer) {
   }
 }
 
+///////////*******************
+//////////// don't want just global color
 // light up a single LED with the default color
 void lightLed(byte col, byte row) {
   setLed(col, row, globalColor, cellOn);
