@@ -492,9 +492,16 @@ void paintNormalDisplayCell(byte split, byte col, byte row) {
   else {
     byte octaveNote = abs(displayedNote % 12);
 
+    ///////////////***********************************
+    ////////////// got to somehow modify colour and possibly Split[split].colorMain to reflect (octaveNote) 
+  
     // first paint all cells in split to its background color
+//     if (Global.mainNotes[Global.activeNotes] & (1 << octaveNote)) {
+//       colour = Split[split].colorMain;
+//       cellDisplay = cellOn;
+//     }
     if (Global.mainNotes[Global.activeNotes] & (1 << octaveNote)) {
-      colour = Split[split].colorMain;
+      colour = Split[split].colorMain;  /// colour = newColors[octaveNote];  /// might work once it exists
       cellDisplay = cellOn;
     }
 
@@ -1221,7 +1228,7 @@ void paintGuitarTuning() {
   clearDisplay();
 
   for (byte r = 0; r < NUMROWS; ++r) {
-    setLed(1, r, guitarTuningRowNum == r ? Split[Global.currentPerSplit].colorAccent : Split[Global.currentPerSplit].colorMain, cellOn);
+    setLed(1, r, guitarTuningRowNum == r ? Split[Global.currentPerSplit].colo rAccent : Split[Global.currentPerSplit].colorMain, cellOn);
   }
 
   paintNoteDataDisplay(globalColor, Global.guitarTuning[guitarTuningRowNum], LINNMODEL == 200 ? 2 : 1);
