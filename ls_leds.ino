@@ -261,15 +261,55 @@ void refreshLedColumn(unsigned long now) {
 
 
 
-///////**********^**^^**********
-// in the next section we have an alternating color sent to cell
+///////**********^**^^**********new code
+ // in the next section we have an alternating color sent to cell
 // we want 3 (at least, hopefully at most) so we can augment a color further
 
-    // if this LED is not off, process it
-    // set the color bytes to the correct color
     if (cellDisplay) {
       // construct composite colors
-      if ((!Device.operatingLowPower && displayInterval[actualCol][rowCount] % 2 != 0) ||
+     
+ if (color = COLOR_ORANGE_RED   ||  color = COLOR_BLUE_GREEN    ||  color = COLOR_BABY_BLUE    ||  color = COLOR_PURPLE_BLUE){
+      if ((!Device.operatingLowPower && displayInterval[actualCol][rowCount] % 3 = 1) ||   // = 1 then = 2 then = 0
+          (Device.operatingLowPower && displayInterval[actualCol][rowCount] % 6 = 2)) {    // = 2 then = 4 then = 0
+        switch (color)
+        {
+          case COLOR_ORANGE_RED:  // these are # defined on the firmware.ino page
+            color = COLOR_RED;
+            break;
+          case COLOR_BLUE_GREEN:
+            color = COLOR_BLUE;
+            break;
+          case COLOR_BABY_BLUE:
+            color = COLOR_BLUE;
+            break;
+          case COLOR_PURPLE_BLUE:
+            color = COLOR_MAGENTA;
+            break;  
+        }
+      }
+ 
+       if ((!Device.operatingLowPower && displayInterval[actualCol][rowCount] % 3 = 2) ||   // = 1 then = 2 then = 0
+          (Device.operatingLowPower && displayInterval[actualCol][rowCount] % 6 = 4)) {    // = 2 then = 4 then = 0
+        switch (color)
+        {
+        //////new iteration to help the defaults
+         case COLOR_ORANGE_RED:  // these are # defined on the firmware.ino page
+            color = COLOR_YELLOW;
+            break;
+          case COLOR_BLUE_GREEN:
+            color = COLOR_BLUE;
+            break;
+          case COLOR_BABY_BLUE:
+            color = COLOR_CYAN;
+            break;
+          case COLOR_PURPLE_BLUE:
+            color = COLOR_BLUE;
+            break; 
+         
+        }
+      } 
+ }else{
+  if ((!Device.operatingLowPower && displayInterval[actualCol][rowCount] % 2 != 0) ||
           (Device.operatingLowPower && displayInterval[actualCol][rowCount] % 4 != 0)) {
         switch (color)
         {
@@ -287,7 +327,7 @@ void refreshLedColumn(unsigned long now) {
             break;
         }
       }
-
+ }
       switch (color)
       {
         case COLOR_OFF:
@@ -331,9 +371,13 @@ void refreshLedColumn(unsigned long now) {
           red = red | (B00000001 << rowCount);
           break;
       }
-    }
-  }
+    }  // end if (cellDisplay) {
 
+      
+
+   
+       // if this LED is not off, process it
+    // set the color bytes to the correct color
   if (++ledCol >= NUMCOLS) ledCol = 0;
 
   ledColShifted = actualCol << 2;
