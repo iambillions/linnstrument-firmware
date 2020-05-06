@@ -251,11 +251,19 @@ void refreshLedColumn(unsigned long now) {
         break;
     }
 
+
+
     if (Device.operatingLowPower) {
       if (displayInterval[actualCol][rowCount] % 2 != 0) {
         cellDisplay = cellOff;
       }
     }
+
+
+
+///////**********^**^^**********
+// in the next section we have an alternating color sent to cell
+// we want 3 (at least, hopefully at most) so we can augment a color further
 
     // if this LED is not off, process it
     // set the color bytes to the correct color
@@ -265,7 +273,7 @@ void refreshLedColumn(unsigned long now) {
           (Device.operatingLowPower && displayInterval[actualCol][rowCount] % 4 != 0)) {
         switch (color)
         {
-          case COLOR_WHITE:
+          case COLOR_WHITE:  // these are defined on the firmware.ino page
             color = COLOR_CYAN;
             break;
           case COLOR_ORANGE:
