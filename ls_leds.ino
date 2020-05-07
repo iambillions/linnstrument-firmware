@@ -267,6 +267,8 @@ void refreshLedColumn(unsigned long now) {
 ///////**********^**^^**********new code
  // in the next section we have an alternating color sent to cell
 // we want 3 (at least, hopefully at most) so we can augment a color further
+   
+   //// color = (ledVisible(LED_LAYER_COMBINED, actualCol, rowCount) & B11111000) >> 3
 
     if (cellDisplay) {
       // construct composite colors
