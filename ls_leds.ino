@@ -300,7 +300,7 @@ void refreshLedColumn(unsigned long now) {
             color = COLOR_YELLOW;
             break;
           case COLOR_BLUE_GREEN:
-            color = COLOR_BLUE;
+            color = COLOR_GREEN;
             break;
           case COLOR_BABY_BLUE:
             color = COLOR_CYAN;
@@ -336,7 +336,24 @@ void refreshLedColumn(unsigned long now) {
         case COLOR_OFF:
         case COLOR_BLACK:
           break;
-        case COLOR_RED:
+case COLOR_ORANGE_RED:  // these are # defined on the firmware.ino page
+            red = red | (B00000001 << rowCount);
+          break;
+            
+          case COLOR_BLUE_GREEN:
+            blue = blue | (B00000001 << rowCount);
+          break;
+            
+          case COLOR_BABY_BLUE:
+            blue = blue | (B00000001 << rowCount);
+          break;
+          case COLOR_PURPLE_BLUE:
+            blue = blue | (B00000001 << rowCount);
+          red = red | (B00000001 << rowCount);
+          break;
+        
+        
+       case COLOR_RED:
           red = red | (B00000001 << rowCount);
           break;
         case COLOR_YELLOW:
